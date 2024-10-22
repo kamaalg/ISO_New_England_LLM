@@ -1,13 +1,9 @@
 # Shazam
-To use this code, run the following in vscode
+To use this code, run the following in vscode virtual environment (venv)
 
 brew update && brew install azure-cli
 
 az login
-
-python3 -m venv .venv
-
-source .venv/bin/activate
 
 python -m pip install --upgrade pip
 
