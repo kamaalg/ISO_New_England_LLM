@@ -1,0 +1,25 @@
+{
+    "function": "get_chat_response",
+    "entry": "copilot:get_chat_response",
+    "environment": {
+        "python_requirements_txt": "requirements.txt"
+    },
+    "name": "copilot_flow",
+    "inputs": {
+        "chat_input": {
+            "type": "string"
+        },
+        "chat_history": {
+            "type": "list",
+            "default": "[]"
+        }
+    },
+    "outputs": {
+        "context": {
+            "type": "object"
+        },
+        "reply": {
+            "type": "string"
+        }
+    }
+}
