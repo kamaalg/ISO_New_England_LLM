@@ -1,5 +1,6 @@
 # Shazam
 To use this code, run the following in vscode
+
 brew update && brew install azure-cli
 
 az login
