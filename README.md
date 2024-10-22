@@ -1,11 +1,17 @@
 # Shazam
 To use this code, run the following in vscode
 brew update && brew install azure-cli
+
 az login
+
 python3 -m venv .venv
+
 source .venv/bin/activate
+
 python -m pip install --upgrade pip
+
 pip install promptflow
+
 pip install azure-identity
 
 az login will prompt you for your azure credentials. You should have no issue here, text me if you do. 
