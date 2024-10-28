@@ -42,14 +42,14 @@ def get_documents(search_query: str, num_docs=3):
     context = ""
     # use the vector embedding to do a vector search on the index
     vector_query = VectorizedQuery(
-        vector=embedding_to_query, k_nearest_neighbors=num_docs, fields="contentVector"
+        vector=embedding_to_query, k_nearest_neighbors=num_docs, fields="text_vector"
     )
     results = trace(search_client.search)(
-        search_text="", vector_queries=[vector_query], select=["id", "content"]
+        search_text="", vector_queries=[vector_query], select=["chunk_id", "chunk"]
     )
 
     for result in results:
-        context += f"\n>>> From: {result['id']}\n{result['content']}"
+        context += f"\n>>> From: {result['chunk_id']}\n{result['chunk']}"
 
     return context
 

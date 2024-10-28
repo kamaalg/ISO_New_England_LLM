@@ -1,14 +1,14 @@
 {
   "flow_runs": [
     {
-      "run_id": "df8bd880-0553-4fd4-b40d-43ddcd9e8a00_0",
+      "run_id": "c01e1941-dfce-43f2-8360-d4309264eca5_0",
       "status": "Failed",
       "error": {
-        "message": "Execution failure in 'get_chat_response': (HttpResponseError) Operation returned an invalid status 'Forbidden'",
+        "message": "Execution failure in 'get_chat_response': (HttpResponseError) (InvalidRequestParameter) Unknown field 'contentVector' in vector field list.\nCode: InvalidRequestParameter\nMessage: Unknown field 'contentVector' in vector field list.\nException Details:\t(UnknownField) Unknown field 'contentVector' in vector field list.\n\tCode: UnknownField\n\tMessage: Unknown field 'contentVector' in vector field list.",
         "messageFormat": "Execution failure in '{func_name}': {error_type_and_message}",
         "messageParameters": {
-          "func_name": "get_chat_response",
-          "error_type_and_message": "(HttpResponseError) Operation returned an invalid status 'Forbidden'"
+          "error_type_and_message": "(HttpResponseError) (InvalidRequestParameter) Unknown field 'contentVector' in vector field list.\nCode: InvalidRequestParameter\nMessage: Unknown field 'contentVector' in vector field list.\nException Details:\t(UnknownField) Unknown field 'contentVector' in vector field list.\n\tCode: UnknownField\n\tMessage: Unknown field 'contentVector' in vector field list.",
+          "func_name": "get_chat_response"
         },
         "referenceCode": "Unknown",
         "code": "UserError",
@@ -21,14 +21,14 @@
             "type": "FlexFlowExecutionErrorDetails",
             "info": {
               "type": "HttpResponseError",
-              "message": "Operation returned an invalid status 'Forbidden'",
-              "traceback": "Traceback (most recent call last):\n  File \"/Users/anthonyrozet/Downloads/untitled folder/.venv/lib/python3.11/site-packages/promptflow/tracing/_trace.py\", line 557, in wrapped\n    output = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/anthonyrozet/Downloads/untitled folder copy/copilot_flow/copilot.py\", line 95, in get_chat_response\n    documents = get_documents(searchQuery, 3)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/anthonyrozet/Downloads/untitled folder/.venv/lib/python3.11/site-packages/promptflow/tracing/_trace.py\", line 557, in wrapped\n    output = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/anthonyrozet/Downloads/untitled folder copy/copilot_flow/copilot.py\", line 51, in get_documents\n    for result in results:\n  File \"/Users/anthonyrozet/Downloads/untitled folder/.venv/lib/python3.11/site-packages/promptflow/tracing/_trace.py\", line 267, in __next__\n    raise exception_other_than_non_stop_iteration\n  File \"/Users/anthonyrozet/Downloads/untitled folder/.venv/lib/python3.11/site-packages/promptflow/tracing/_trace.py\", line 249, in __next__\n    return super().__next__()\n           ^^^^^^^^^^^^^^^^^^\n  File \"/Users/anthonyrozet/Downloads/untitled folder/.venv/lib/python3.11/site-packages/promptflow/tracing/contracts/iterator_proxy.py\", line 22, in __next__\n    item = next(self._iterator)\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/anthonyrozet/Downloads/untitled folder/.venv/lib/python3.11/site-packages/promptflow/tracing/contracts/iterator_proxy.py\", line 22, in __next__\n    item = next(self._iterator)\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/anthonyrozet/Downloads/untitled folder/.venv/lib/python3.11/site-packages/azure/search/documents/_paging.py\", line 54, in __next__\n    return next(self._page_iterator)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/anthonyrozet/Downloads/untitled folder/.venv/lib/python3.11/site-packages/azure/core/paging.py\", line 75, in __next__\n    self._response = self._get_next(self.continuation_token)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/anthonyrozet/Downloads/untitled folder/.venv/lib/python3.11/site-packages/azure/search/documents/_paging.py\", line 124, in _get_next_cb\n    return self._client.documents.search_post(search_request=self._initial_query.request, **self._kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/anthonyrozet/Downloads/untitled folder/.venv/lib/python3.11/site-packages/azure/core/tracing/decorator.py\", line 94, in wrapper_use_tracer\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/anthonyrozet/Downloads/untitled folder/.venv/lib/python3.11/site-packages/azure/search/documents/_generated/operations/_documents_operations.py\", line 756, in search_post\n    raise HttpResponseError(response=response, model=error)\nazure.core.exceptions.HttpResponseError: Operation returned an invalid status 'Forbidden'\n"
+              "message": "(InvalidRequestParameter) Unknown field 'contentVector' in vector field list.\nCode: InvalidRequestParameter\nMessage: Unknown field 'contentVector' in vector field list.\nException Details:\t(UnknownField) Unknown field 'contentVector' in vector field list.\n\tCode: UnknownField\n\tMessage: Unknown field 'contentVector' in vector field list.",
+              "traceback": "Traceback (most recent call last):\n  File \"/opt/homebrew/lib/python3.11/site-packages/promptflow/tracing/_trace.py\", line 513, in wrapped\n    output = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/anthonyrozet/Downloads/Shazam/azure api call/copilot_flow/copilot.py\", line 95, in get_chat_response\n    documents = get_documents(searchQuery, 3)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/lib/python3.11/site-packages/promptflow/tracing/_trace.py\", line 513, in wrapped\n    output = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/anthonyrozet/Downloads/Shazam/azure api call/copilot_flow/copilot.py\", line 51, in get_documents\n    for result in results:\n  File \"/opt/homebrew/lib/python3.11/site-packages/promptflow/tracing/_trace.py\", line 238, in traced_generator\n    yield from generator_proxy\n  File \"/opt/homebrew/lib/python3.11/site-packages/promptflow/tracing/contracts/generator_proxy.py\", line 19, in __next__\n    item = next(self._iterator)\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/lib/python3.11/site-packages/promptflow/tracing/contracts/generator_proxy.py\", line 34, in generate_from_proxy\n    yield from proxy\n  File \"/opt/homebrew/lib/python3.11/site-packages/promptflow/tracing/contracts/generator_proxy.py\", line 19, in __next__\n    item = next(self._iterator)\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/lib/python3.11/site-packages/azure/search/documents/_paging.py\", line 54, in __next__\n    return next(self._page_iterator)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/lib/python3.11/site-packages/azure/core/paging.py\", line 75, in __next__\n    self._response = self._get_next(self.continuation_token)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/lib/python3.11/site-packages/azure/search/documents/_paging.py\", line 124, in _get_next_cb\n    return self._client.documents.search_post(search_request=self._initial_query.request, **self._kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/lib/python3.11/site-packages/azure/core/tracing/decorator.py\", line 94, in wrapper_use_tracer\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/lib/python3.11/site-packages/azure/search/documents/_generated/operations/_documents_operations.py\", line 756, in search_post\n    raise HttpResponseError(response=response, model=error)\nazure.core.exceptions.HttpResponseError: (InvalidRequestParameter) Unknown field 'contentVector' in vector field list.\nCode: InvalidRequestParameter\nMessage: Unknown field 'contentVector' in vector field list.\nException Details:\t(UnknownField) Unknown field 'contentVector' in vector field list.\n\tCode: UnknownField\n\tMessage: Unknown field 'contentVector' in vector field list.\n"
             }
           }
         ],
         "debugInfo": {
           "type": "ScriptExecutionError",
-          "message": "Execution failure in 'get_chat_response': (HttpResponseError) Operation returned an invalid status 'Forbidden'",
+          "message": "Execution failure in 'get_chat_response': (HttpResponseError) (InvalidRequestParameter) Unknown field 'contentVector' in vector field list.\nCode: InvalidRequestParameter\nMessage: Unknown field 'contentVector' in vector field list.\nException Details:\t(UnknownField) Unknown field 'contentVector' in vector field list.\n\tCode: UnknownField\n\tMessage: Unknown field 'contentVector' in vector field list.",
           "stackTrace": "Traceback (most recent call last):\n",
           "innerException": null
         }
@@ -40,12 +40,12 @@
       "output": null,
       "metrics": null,
       "request": null,
-      "parent_run_id": "df8bd880-0553-4fd4-b40d-43ddcd9e8a00",
-      "root_run_id": "df8bd880-0553-4fd4-b40d-43ddcd9e8a00",
+      "parent_run_id": "c01e1941-dfce-43f2-8360-d4309264eca5",
+      "root_run_id": "c01e1941-dfce-43f2-8360-d4309264eca5",
       "source_run_id": null,
       "flow_id": "default_flow_id",
-      "start_time": "2024-10-22T06:34:56.753515Z",
-      "end_time": "2024-10-22T06:34:59.810498Z",
+      "start_time": "2024-10-28T18:44:53.554751Z",
+      "end_time": "2024-10-28T18:44:56.912844Z",
       "index": 0,
       "api_calls": [
         {
@@ -56,10 +56,10 @@
             "chat_history": []
           },
           "output": null,
-          "start_time": 1729593296.753606,
-          "end_time": 1729593299.791659,
+          "start_time": 1730155493.554822,
+          "end_time": 1730155496.90106,
           "error": {
-            "message": "Operation returned an invalid status 'Forbidden'",
+            "message": "(InvalidRequestParameter) Unknown field 'contentVector' in vector field list.\nCode: InvalidRequestParameter\nMessage: Unknown field 'contentVector' in vector field list.\nException Details:\t(UnknownField) Unknown field 'contentVector' in vector field list.\n\tCode: UnknownField\n\tMessage: Unknown field 'contentVector' in vector field list.",
             "type": "HttpResponseError"
           },
           "children": [
@@ -71,10 +71,10 @@
                 "num_docs": 3
               },
               "output": null,
-              "start_time": 1729593296.754016,
-              "end_time": 1729593299.789738,
+              "start_time": 1730155493.555178,
+              "end_time": 1730155496.898514,
               "error": {
-                "message": "Operation returned an invalid status 'Forbidden'",
+                "message": "(InvalidRequestParameter) Unknown field 'contentVector' in vector field list.\nCode: InvalidRequestParameter\nMessage: Unknown field 'contentVector' in vector field list.\nException Details:\t(UnknownField) Unknown field 'contentVector' in vector field list.\n\tCode: UnknownField\n\tMessage: Unknown field 'contentVector' in vector field list.",
                 "type": "HttpResponseError"
               },
               "children": [
@@ -1637,13 +1637,13 @@
                       "total_tokens": 19
                     }
                   },
-                  "start_time": 1729593296.802029,
-                  "end_time": 1729593298.238802,
+                  "start_time": 1730155493.598532,
+                  "end_time": 1730155495.211525,
                   "error": null,
                   "children": [],
                   "node_name": null,
-                  "parent_id": "0b6d846c-fe9b-4aba-88c2-3b96d791d551",
-                  "id": "453da29a-aa92-487d-9eed-6cc45644926d",
+                  "parent_id": "ada06d31-1cee-487f-a7e3-b63a648e8412",
+                  "id": "5e1ae836-7965-46a1-94a5-14dd1e17961b",
                   "function": "openai.resources.embeddings.Embeddings.create"
                 },
                 {
@@ -1651,32 +1651,32 @@
                   "type": "Function",
                   "inputs": {
                     "search_text": "",
-                    "vector_queries": "[<azure.search.documents._generated.models._models_py3.VectorizedQuery object at 0x10b3a7310>]",
+                    "vector_queries": "[<azure.search.documents._generated.models._models_py3.VectorizedQuery object at 0x113631850>]",
                     "select": [
-                      "id",
-                      "content"
+                      "chunk_id",
+                      "text_vector"
                     ]
                   },
                   "output": [],
-                  "start_time": 1729593298.239038,
-                  "end_time": 1729593298.239593,
+                  "start_time": 1730155495.211755,
+                  "end_time": 1730155495.2123,
                   "error": null,
                   "children": [],
                   "node_name": null,
-                  "parent_id": "0b6d846c-fe9b-4aba-88c2-3b96d791d551",
-                  "id": "22e0065f-7e0b-488d-98c8-90d8c77e15be",
+                  "parent_id": "ada06d31-1cee-487f-a7e3-b63a648e8412",
+                  "id": "4d87c9b2-985e-45f6-ba12-251a61596fb7",
                   "function": "SearchClient.search"
                 }
               ],
               "node_name": null,
-              "parent_id": "c405b6c0-888c-4712-bbc6-f51e054dc24a",
-              "id": "0b6d846c-fe9b-4aba-88c2-3b96d791d551",
+              "parent_id": "3ce4c858-1a21-431a-a16b-a07bf4505086",
+              "id": "ada06d31-1cee-487f-a7e3-b63a648e8412",
               "function": "get_documents"
             }
           ],
           "node_name": null,
           "parent_id": "",
-          "id": "c405b6c0-888c-4712-bbc6-f51e054dc24a",
+          "id": "3ce4c858-1a21-431a-a16b-a07bf4505086",
           "function": "get_chat_response"
         }
       ],
@@ -1684,11 +1684,11 @@
       "description": "",
       "tags": null,
       "system_metrics": {
-        "duration": 3.056983
+        "duration": 3.358093
       },
       "result": null,
       "upload_metrics": false,
-      "otel_trace_id": "0x815d8de33260903d588697b86d3a57e6",
+      "otel_trace_id": "0x52db80f4dec01ee9bc7e2486928fb1cb",
       "message_format": "basic"
     }
   ],

@@ -1,5 +1,32 @@
 {
-    "init": {
-        "flow.flex.yaml": {}
+  "chat_list": [
+    {
+      "name": "default",
+      "inputs": {
+        "chat_history": [
+          {
+            "role": "user",
+            "content": "What is the Supervisor of Short Term Outage Coordination responsible for during OperatingProcedure No. 3 - Transmission Outage Scheduling (OP-3) event?"
+          },
+          {
+            "role": "assistant",
+            "content": ""
+          },
+          {
+            "role": "user",
+            "content": "What is the Supervisor of Short Term Outage Coordination responsible for during OperatingProcedure No. 3 - Transmission Outage Scheduling (OP-3) event?"
+          },
+          {
+            "role": "assistant",
+            "content": ""
+          }
+        ],
+        "chat_input": "What is the Supervisor of Short Term Outage Coordination responsible for during OperatingProcedure No. 3 - Transmission Outage Scheduling (OP-3) event?"
+      }
     }
+  ],
+  "prompty_chat_list": [],
+  "init": {
+    "flow.flex.yaml": {}
+  }
 }
