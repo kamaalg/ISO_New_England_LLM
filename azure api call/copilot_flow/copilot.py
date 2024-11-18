@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-
+import sys
 load_dotenv()
 
 from promptflow.core import Prompty, AzureOpenAIModelConfiguration
@@ -108,3 +108,10 @@ def get_chat_response(chat_input: str, chat_history: list = []) -> ChatResponse:
     )
 
     return dict(reply=result, context=documents)
+if __name__ == "main":
+    input_string = sys.argv[1]
+    chat_history = sys.argv[2]
+
+    get_chat_response(input_string,chat_history)
+
+

@@ -1,4 +1,4 @@
-openai
+openai<=1.44.1
 azure-identity
 azure-search-documents==11.4.0
 promptflow[azure]==1.11.0
