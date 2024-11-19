@@ -1,11 +1,12 @@
 import os
 from dotenv import load_dotenv
-import sys
-load_dotenv()
 
+load_dotenv()
+import sys
 from promptflow.core import Prompty, AzureOpenAIModelConfiguration
 from promptflow.tracing import trace
 from openai import AzureOpenAI
+from azure.core.credentials import AzureKeyCredential
 
 # <get_documents>
 @trace
@@ -19,11 +20,11 @@ def get_documents(search_query: str, num_docs=3):
     )
 
     index_name = os.getenv("AZUREAI_SEARCH_INDEX_NAME")
-
+    AZURE_COGNITIVE_SEARCH_CREDENTIAL = AzureKeyCredential(os.getenv("AZURE_AI_SEARCH_API_KEY"))
     #  retrieve documents relevant to the user's question from Cognitive Search
     search_client = SearchClient(
         endpoint=os.getenv("AZURE_SEARCH_ENDPOINT"),
-        credential=DefaultAzureCredential(),
+        credential=AZURE_COGNITIVE_SEARCH_CREDENTIAL,
         index_name=index_name,
     )
 
@@ -47,7 +48,6 @@ def get_documents(search_query: str, num_docs=3):
     results = trace(search_client.search)(
         search_text="", vector_queries=[vector_query], select=["chunk_id", "chunk"]
     )
-
     for result in results:
         context += f"\n>>> From: {result['chunk_id']}\n{result['chunk']}"
 
@@ -108,10 +108,19 @@ def get_chat_response(chat_input: str, chat_history: list = []) -> ChatResponse:
     )
 
     return dict(reply=result, context=documents)
-if __name__ == "main":
+
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 3:
+        print("Error: Not enough arguments.", flush=True)
+        sys.exit(1)
+
     input_string = sys.argv[1]
     chat_history = sys.argv[2]
+    print("Received arguments:", input_string, chat_history, flush=True)
 
-    get_chat_response(input_string,chat_history)
-
+    # Get the response and print it to stdout
+    response = get_chat_response(input_string, chat_history)
+    print(response, flush=True)
 
