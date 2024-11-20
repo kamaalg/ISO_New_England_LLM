@@ -12,14 +12,17 @@ router.get("/get_query",async (req, res) => {
     } catch (error) {
         console.error(`Error: ${error.message}`);
     }
+    res.setHeader('Content-Type', 'application/json');
 
-    res.send({message: result});
+    res.status(200).json({
+        message: result,
+    });;
 })
 function bridge(input_string, chat_history) {
     const { spawn } = require('child_process');
 
     return new Promise((resolve, reject) => {
-        const pythonProcess = spawn('python3', ['copilot.py', input_string, chat_history]);
+        const pythonProcess = spawn('python3', ['/Users/kamalgurbanov/IdeaProjects/cs320_project/Shazam/azure/copilot_flow/copilot.py', input_string, chat_history]);
 
         let stdoutData = '';
         let stderrData = '';

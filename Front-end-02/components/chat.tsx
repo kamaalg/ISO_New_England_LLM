@@ -10,13 +10,13 @@ import { Overview } from './overview';
 
 export function Chat() {
   const [messages, setMessages] = useState<
-    Array<{ id: string; role: string; content: string; partialContent?: string }>
+      Array<{ id: string; role: string; content: string; partialContent?: string }>
   >([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const [messagesContainerRef, messagesEndRef] =
-    useScrollToBottom<HTMLDivElement>();
+      useScrollToBottom<HTMLDivElement>();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,11 +35,11 @@ export function Chat() {
     setIsLoading(true);
 
     // Simulate a chatbot response with @echo functionality
-    setTimeout(() => {
+    setTimeout(async () => {
       const botResponse = {
         id: `${Date.now() + 1}`,
         role: 'bot',
-        content: `@echo ${input}`,
+        content: await fetchBotResponse(userMessage.content), // Fetch bot response
         partialContent: '', // For gradual appearance
       };
 
@@ -50,20 +50,42 @@ export function Chat() {
     }, 1000); // Simulate a 1-second delay
   };
 
+  // Function to fetch bot response
+  const fetchBotResponse = async (query) => {
+    const searchURL = `http://localhost:3000/frontend/get_query?query=${encodeURIComponent(query)}`;
+    try {
+      const response = await fetch(searchURL, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const json = await response.json();
+      return json.message;
+    } catch (error) {
+      console.error(`Error fetching bot response for query "${query}":`, error);
+      throw error;
+    }
+  };
+
+
   // Function to simulate typing effect
   const simulateTypingEffect = (messageId: string, fullContent: string) => {
     let currentIndex = 0;
 
     const typingInterval = setInterval(() => {
       setMessages((prev) =>
-        prev.map((message) =>
-          message.id === messageId
-            ? {
-                ...message,
-                partialContent: fullContent.slice(0, currentIndex + 1),
-              }
-            : message,
-        ),
+          prev.map((message) =>
+              message.id === messageId
+                  ? {
+                    ...message,
+                    partialContent: fullContent.slice(0, currentIndex + 1),
+                  }
+                  : message,
+          ),
       );
 
       currentIndex++;
@@ -75,45 +97,45 @@ export function Chat() {
   };
 
   return (
-    <div className="flex flex-col min-w-0 h-dvh bg-background">
-      <ChatHeader /> {/* Static header */}
-      <div
-        ref={messagesContainerRef}
-        className="flex flex-col min-w-0 gap-6 flex-1 overflow-y-scroll pt-4"
-      >
-        {messages.length === 0 && <Overview />} {/* Show overview if no messages */}
-
-        {messages.map((message, index) => (
-          <PreviewMessage
-            key={message.id}
-            message={{
-              ...message,
-              content: message.partialContent ?? message.content,
-            }}
-            isLoading={isLoading && messages.length - 1 === index}
-          />
-        ))}
-
-        {isLoading && (
-          <ThinkingMessage /> /* Show thinking message while bot is responding */
-        )}
-
+      <div className="flex flex-col min-w-0 h-dvh bg-background">
+        <ChatHeader /> {/* Static header */}
         <div
-          ref={messagesEndRef}
-          className="shrink-0 min-w-[24px] min-h-[24px]"
-        />
+            ref={messagesContainerRef}
+            className="flex flex-col min-w-0 gap-6 flex-1 overflow-y-scroll pt-4"
+        >
+          {messages.length === 0 && <Overview />} {/* Show overview if no messages */}
+
+          {messages.map((message, index) => (
+              <PreviewMessage
+                  key={message.id}
+                  message={{
+                    ...message,
+                    content: message.partialContent ?? message.content,
+                  }}
+                  isLoading={isLoading && messages.length - 1 === index}
+              />
+          ))}
+
+          {isLoading && (
+              <ThinkingMessage /> /* Show thinking message while bot is responding */
+          )}
+
+          <div
+              ref={messagesEndRef}
+              className="shrink-0 min-w-[24px] min-h-[24px]"
+          />
+        </div>
+        <form
+            className="flex mx-auto px-4 bg-background pb-4 md:pb-6 gap-2 w-full md:max-w-3xl"
+            onSubmit={handleSubmit}
+        >
+          <MultimodalInput
+              input={input}
+              setInput={setInput}
+              handleSubmit={handleSubmit}
+              isLoading={isLoading}
+          />
+        </form>
       </div>
-      <form
-        className="flex mx-auto px-4 bg-background pb-4 md:pb-6 gap-2 w-full md:max-w-3xl"
-        onSubmit={handleSubmit}
-      >
-        <MultimodalInput
-          input={input}
-          setInput={setInput}
-          handleSubmit={handleSubmit}
-          isLoading={isLoading}
-        />
-      </form>
-    </div>
   );
 }
