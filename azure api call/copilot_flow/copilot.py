@@ -118,7 +118,7 @@ if __name__ == "__main__":
 
     input_string = sys.argv[1]
     chat_history = sys.argv[2]
-    print("Received arguments:", input_string, chat_history, flush=True)
+    print(f"Received arguments:{input_string},{chat_history}", flush=True)
 
     # Get the response and print it to stdout
     response = get_chat_response(input_string, chat_history)

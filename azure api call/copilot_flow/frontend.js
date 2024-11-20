@@ -7,7 +7,7 @@ router.get("/get_query",async (req, res) => {
     chat_history.push(query)
     let result = ''
     try {
-        result = await bridge('input_string_here', 'chat_history_here');
+        result = await bridge(query, chat_history);
         console.log(`Received from Python: ${result}`);
     } catch (error) {
         console.error(`Error: ${error.message}`);
@@ -19,7 +19,7 @@ function bridge(input_string, chat_history) {
     const { spawn } = require('child_process');
 
     return new Promise((resolve, reject) => {
-        const pythonProcess = spawn('python3', ['Shazam/azure api call/copilot_flow/copilot.py', input_string, chat_history]);
+        const pythonProcess = spawn('python3', ['copilot.py', input_string, chat_history]);
 
         let stdoutData = '';
         let stderrData = '';
