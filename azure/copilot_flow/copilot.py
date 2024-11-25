@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-
+import json
 load_dotenv()
 import sys
 from promptflow.core import Prompty, AzureOpenAIModelConfiguration
@@ -118,9 +118,8 @@ if __name__ == "__main__":
 
     input_string = sys.argv[1]
     chat_history = sys.argv[2]
-    print(f"Received arguments:{input_string},{chat_history}", flush=True)
 
     # Get the response and print it to stdout
     response = get_chat_response(input_string, chat_history)
-    print(response, flush=True)
+    print(json.dumps(response), flush=True)
 
