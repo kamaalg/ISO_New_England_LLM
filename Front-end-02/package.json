@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "concurrently \"node /Users/kamalgurbanov/IdeaProjects/cs320_project/Shazam/azure/copilot_flow/server.js \" \"next dev\"",
+    "start": "concurrently \"node ../azure/copilot_flow/server.js \" \"next dev\"",
     "lint": "next lint"
   },
   "dependencies": {
@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@types/node": "^20",
-    "@types/react": "^18",
+    "@types/react": "18.3.12",
     "@types/react-dom": "^18",
     "concurrently": "^9.1.0",
     "eslint": "^8",
