@@ -6,6 +6,7 @@ let chat_history = []
 router.get("/get_query",async (req, res) => {
     const query = req.query.query;
     chat_history.push(query)
+    console.log(chat_history)
     let reply = ''
     try {
         const result = await bridge(query, chat_history);
