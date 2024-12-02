@@ -8,20 +8,19 @@ import {
   SidebarHeader,
   SidebarMenu,
   useSidebar,
-} from '@/components/ui/sidebar';
-import { BetterTooltip } from '@/components/ui/tooltip';
-import { ThemeSwitcher } from '@/components/themeswitcher';
+} from './ui/sidebar';
+import { BetterTooltip } from './ui/tooltip';
+import { ThemeSwitcher } from './themeswitcher';
 import Link from 'next/link';
 
 export function AppSidebar() {
   const { setOpenMobile } = useSidebar();
-  const { theme } = useTheme(); // Get the current theme
 
   // Dynamic classes for the links based on the theme
   const linkBaseClasses = 'flex flex-row gap-3 items-center px-2 rounded-md cursor-pointer';
-  const lightModeClasses = 'bg-gray-200 text-black hover:bg-gray-300';
-  const darkModeClasses = 'bg-gray-700 text-white hover:bg-gray-600';
-  const linkThemeClasses = theme === 'dark' ? darkModeClasses : lightModeClasses;
+  const lightModeClasses = 'bg-gray-200/75 text-black hover:bg-gray-200'; // 75% opacity
+  const darkModeClasses = 'dark:bg-gray-700/75 dark:text-white dark:hover:bg-gray-800'; // 75% opacity
+  const linkThemeClasses = `${lightModeClasses} ${darkModeClasses}`
 
   return (
     <Sidebar className="group-data-[side=left]:border-r-0">
@@ -29,7 +28,7 @@ export function AppSidebar() {
         <SidebarMenu>
           <div className="flex flex-row justify-between items-center">
             <Link
-              href="/Chat"
+              href="/dashboard"
               onClick={() => {
                 setOpenMobile(false);
               }}
@@ -38,7 +37,7 @@ export function AppSidebar() {
               <span className="text-lg font-semibold">Chatbot</span>
             </Link>
             <Link
-              href="/chat"
+              href="/analytics"
               onClick={() => {
                 setOpenMobile(false);
               }}

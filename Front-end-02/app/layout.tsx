@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import { Toaster } from 'sonner';
 
-import { ThemeProvider } from '@/components/theme-provider';
+import { ThemeProvider } from '../components/theme-provider';
 
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'ISO New England Sign in',
-  description: 'Sign in Page for ISO New England chatbot',
+  title: 'ISO New England',
+  description: 'ISO New England chatbot',
 };
 
 export const viewport = {

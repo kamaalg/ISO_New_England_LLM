@@ -4,14 +4,17 @@
   "description": "",
   "main": "Shazam/azure api call/copilot_flow/server.js",
   "scripts": {
+    "start": "conc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "private": true,
   "dependencies": {
     "@azure/core-auth": "^1.9.0",
+    "concurrently": "^9.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
+    "next": "^15.0.3",
     "openai": "^4.71.1"
   }
 }
