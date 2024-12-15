@@ -24,7 +24,7 @@ export const Overview = () => {
         Welcome to the ISO New England Chatbot, your guide to understanding and navigating the region’s power grid operations.
         </p>
         <p>
-        This is a Chatbot built with Next.js and the Azure Open Ai by microsoft
+        This is a Chatbot built with Next.js and the Azure Open AI by microsoft
         </p>
       </div>
     </motion.div>

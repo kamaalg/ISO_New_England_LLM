@@ -27,7 +27,7 @@ function bridge(input_string, chat_history) {
     const { spawn } = require('child_process');
 
     return new Promise((resolve, reject) => {
-        const pythonProcess = spawn('python3', ['/Users/kamalgurbanov/IdeaProjects/cs320_project/Shazam/azure/copilot_flow/copilot.py', input_string, chat_history]);
+        const pythonProcess = spawn('python3', ['/Users/anthonyrozet/Downloads/Shazam/azure/copilot_flow/copilot.py', input_string, chat_history]);
 
         let stdoutData = '';
         let stderrData = '';

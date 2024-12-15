@@ -46,11 +46,10 @@ def get_documents(search_query: str, num_docs=3):
         vector=embedding_to_query, k_nearest_neighbors=num_docs, fields="text_vector"
     )
     results = trace(search_client.search)(
-        search_text="", vector_queries=[vector_query], select=["chunk_id", "chunk"]
+        search_text="", vector_queries=[vector_query], select=["site", "chunk"]
     )
     for result in results:
-        context += f"\n>>> From: {result['chunk_id']}\n{result['chunk']}"
-
+        context += f"\n>>> From: {result['site']}\n{result['chunk']}"
     return context
 
 
@@ -73,7 +72,7 @@ def get_chat_response(chat_input: str, chat_history: list = []) -> ChatResponse:
         api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
         azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
     )
-
+    link = ""
     searchQuery = chat_input
 
     # Only extract intent if there is chat_history
