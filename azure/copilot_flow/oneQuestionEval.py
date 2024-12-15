@@ -55,13 +55,13 @@ def getOneQuestionEval(object):
     return new_obj
 
 def main():
-    input_query = sys.argv[0]
-    ground_truth = sys.argv[1]
-    model_response = sys.argv[2]
+    input_query = sys.argv[1]
+    ground_truth = sys.argv[2]
+    model_response = sys.argv[3]
     obj = {
-        "query": "What are the questions raised in the ISO-NE PUBLIC problem statement/scoping discussion?",
-        "ground_truth": "The questions raised in the ISO-NE PUBLIC problem statement/scoping discussion are: \n1. Is one mechanism more cost effective for the ISO to implement? \n2. Does one mechanism provide more comparable treatment of resources in the clearing of the auction? \n3. Would either auction format provide more information about lower cost resources; and would that information provide value to the marketplace (after the results)? \n4. Which mechanism better facilitates the inclusion and consideration of new resources in mitigation and reliability reviews? \nAdditionally, there are other issues raised such as the implications of using a single round DCA that includes the cap down to the floor and whether mitigated price effectively collapses the DCA into a sealed bid format. [20151202_stakeholder_feedback.pdf]",
-        "response": "The questions raised in the ISO-NE PUBLIC problem statement/scoping discussion are as follows:\n\n1. Are there inherent differences between auction structures used to procure load vs. procure supply?\n2. If information sharing is a benefit of an open auction, why have that structure when price/quantity pairs within rounds do not reveal information to other suppliers?\n3. Would a more competitive auction feature allow all resources to enter bids at the same time and be held to the submitted prices?\n4. Can the DCA format be changed to share more information?\n5. Would one of the auction formats better facilitate a design where costs could determine overlapping impacts/queue positions?\n6. Does one of the auction formats better facilitate changes to, or more flexibility in, the current timelines?\n7. Does one auction design encourage bidders to focus more on their individual cost recovery needs vs. trying to discover the actions/behavior of other bidders?\n8. Does one mechanism better model complex zonal configurations?\n9. Does one mechanism better attract new entry?\n10. Does one mechanism better facilitate reliability reviews?\n11. Is one mechanism more cost effective for the ISO to implement?\n12. Does one mechanism provide more comparable treatment of resources in the clearing of the auction?"
+        "query":input_query,
+        "ground_truth": ground_truth,
+        "response": model_response
     }
 
     evaluation_result = getOneQuestionEval(obj)
