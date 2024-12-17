@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
-import { SunIcon, MoonIcon } from './icons'; // Replace with your icon paths
+import { SunIcon, MoonIcon } from './icons';
+import { BetterTooltip } from './ui/tooltip';
 
 export function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
@@ -14,20 +15,25 @@ export function ThemeSwitcher() {
   if (!mounted) return null;
 
   const toggleTheme = () => {
+    console.log("Hello")
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
   return (
-    <button
-      onClick={toggleTheme}
-      className="p-2 bg-gray-200 dark:bg-gray-700 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600"
-      aria-label="Toggle Theme"
-    >
-      {theme === 'dark' ? (
-        <SunIcon className="w-5 h-5 text-yellow-500" />
-      ) : (
-        <MoonIcon className="w-5 h-5 text-gray-800" />
-      )}
-    </button>
+<BetterTooltip
+  content={theme === 'dark' ? 'Turn on light mode' : 'Turn on dark mode'}
+  align="start"
+>
+  <button
+    onClick={toggleTheme}
+    className="p-2 bg-gray-200/75 dark:bg-gray-700/75 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800"
+  >
+    {theme === 'dark' ? (
+      <SunIcon className="w-5 h-5 text-yellow-500" />
+    ) : (
+      <MoonIcon className="w-5 h-5 text-gray-800" />
+    )}
+  </button>
+</BetterTooltip>
   );
 }

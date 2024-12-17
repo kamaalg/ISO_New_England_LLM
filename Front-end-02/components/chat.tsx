@@ -2,9 +2,9 @@
 
 import { useState} from 'react';
 
-import { ChatHeader } from '@/components/chat-header';
-import { PreviewMessage, ThinkingMessage } from '@/components/message';
-import { useScrollToBottom } from '@/components/use-scroll-to-bottom';
+import { ChatHeader } from './chat-header';
+import { PreviewMessage, ThinkingMessage } from './message';
+import { useScrollToBottom } from './use-scroll-to-bottom';
 import { MultimodalInput } from './multimodal-input';
 import { Overview } from './overview';
 
@@ -35,11 +35,24 @@ export function Chat() {
     setIsLoading(true);
 
     // Simulate a chatbot response with @echo functionality
-    setTimeout(() => {
+    //setTimeout(async () => {
+    //const botResponse = {
+    //  id: `${Date.now() + 1}`,
+    //  role: 'bot',
+    //  content: `@echo ${await fetchBotResponse(userMessage.content)}`, // Fetch bot response and prepend @echo
+    //  partialContent: '', // For gradual appearance
+    //};
+    //
+      // Append bot response with gradual typing effect
+    //setMessages((prev) => [...prev, botResponse]);
+    //setIsLoading(false);
+    //simulateTypingEffect(botResponse.id, botResponse.content);
+    //}, 1000); // Simulate a 1-second delay
+    setTimeout(async () => {
       const botResponse = {
         id: `${Date.now() + 1}`,
         role: 'bot',
-        content: `@echo ${input}`,
+        content: await fetchBotResponse(userMessage.content), // Fetch bot response
         partialContent: '', // For gradual appearance
       };
 
@@ -50,28 +63,43 @@ export function Chat() {
     }, 1000); // Simulate a 1-second delay
   };
 
+  // Function to fetch bot response
+  const fetchBotResponse = async (query: string) => {
+    const searchURL = `http://localhost:3000/frontend/get_query?query=${encodeURIComponent(query)}`; // Create a new endpoint for fetching bot responses
+  
+    try {
+      const response = await fetch(searchURL);
+      if (!response.ok) throw new Error(response.statusText);
+      const json = await response.json();
+      return json.message;
+    } catch (error) {
+      console.error(`Error fetching bot response for query "${query}":`, error);
+      throw error;
+    }
+  };
+
   // Function to simulate typing effect
   const simulateTypingEffect = (messageId: string, fullContent: string) => {
     let currentIndex = 0;
-
+  
     const typingInterval = setInterval(() => {
       setMessages((prev) =>
         prev.map((message) =>
           message.id === messageId
             ? {
                 ...message,
-                partialContent: fullContent.slice(0, currentIndex + 1),
+                partialContent: fullContent.slice(0, currentIndex + 3),
               }
             : message,
         ),
       );
-
+  
       currentIndex++;
-
+  
       if (currentIndex === fullContent.length) {
         clearInterval(typingInterval);
       }
-    }, 50); // Adjust typing speed here (50ms per character)
+    }, 0); // Reduce to 0ms for maximum speed
   };
 
   return (

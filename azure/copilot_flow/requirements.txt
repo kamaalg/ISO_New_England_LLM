@@ -8,3 +8,4 @@ promptflow-evals==0.3.0
 jinja2
 aiohttp
 python-dotenv
+httpx==0.27.2

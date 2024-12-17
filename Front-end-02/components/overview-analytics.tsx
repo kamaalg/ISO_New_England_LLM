@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-export const Overview = () => {
+export const OverviewAnalytics = () => {
   return (
     <motion.div
       key="overview"
@@ -21,10 +21,7 @@ export const Overview = () => {
           />
         </p>
         <p>
-        Welcome to the ISO New England Chatbot, your guide to understanding and navigating the region’s power grid operations.
-        </p>
-        <p>
-        This is a Chatbot built with Next.js and the Azure Open AI by microsoft
+        Welcome to the ISO New England Chatbot Analytics. Feel free to evaluate our AI chatbot with our testing guidelines. Feedbacks are welcome so we can further improve the chatbot's performance.
         </p>
       </div>
     </motion.div>
