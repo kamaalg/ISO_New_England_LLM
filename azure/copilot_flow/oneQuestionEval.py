@@ -4,6 +4,7 @@ credential = DefaultAzureCredential()
 import asyncio
 from azure.ai.evaluation import RelevanceEvaluator, CoherenceEvaluator, SimilarityEvaluator, F1ScoreEvaluator, BleuScoreEvaluator
 import sys
+import json
 os.environ["AZURE_OPENAI_ENDPOINT"] = "https://shazamy2.openai.azure.com/"
 os.environ["AZURE_OPENAI_API_KEY"] = "4kN4ICJzB3sPWUJZg8i4JkgqiBDEKdTW2ry5kl04HM42Zvqua3lCJQQJ99ALACYeBjFXJ3w3AAABACOGh10v"
 os.environ["AZURE_OPENAI_DEPLOYMENT"] = "gpt-4o"
@@ -65,8 +66,8 @@ def main():
     }
 
     evaluation_result = getOneQuestionEval(obj)
-    
-    print("Evaluation Results: ", evaluation_result)
+
+    print(json.dumps(evaluation_result), flush=True)
 
 if __name__ == "__main__":
     main()

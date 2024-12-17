@@ -9,7 +9,7 @@ router.post("/test_model", async (req, res) => {
     let expected_output = dictionary.expected_output
     let user_input = dictionary.user_input
     let model_response = ""
-    let response_testing = {}
+    let testing_response = {}
     try{
         result = await bridge_frontend(user_input,[])
         const parsed_result = JSON.parse(result)
@@ -21,19 +21,22 @@ router.post("/test_model", async (req, res) => {
 
     }
     try{
-        response_testing = await bridge_testing(user_input,expected_output,model_response)
+        let response_testing = await bridge_testing(user_input,expected_output,model_response)
+        testing_response = JSON.parse(response_testing)
+
 
     } catch (error) {
         console.error(`Error: ${error.message}`);
         reply = "Some error occurred during testing";
     }
+    const return_string = `${testing_response.response}\nRelevance: ${testing_response.relevance}\nCoherence: ${testing_response.coherence}\nSimilarity: ${testing_response.similarity}\nF1_score: ${testing_response.f1_score}`;
 
 
 
 
 
     res.status(200).json({
-        message: response_testing,
+        message: return_string,
     });
 });
 function bridge_testing(user_input, expected_output,model_response) {
