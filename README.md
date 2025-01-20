@@ -54,15 +54,16 @@
 ├── shazam-scraping/       # Scraping scripts and collected data
 ```
 ## Azure Module Details
-The ** azure ** folder contains the core functionality of Shazam, focusing on Azure integration and Promptflow workflows.
-** Key Files: **
 
-.env: Environment configuration for Azure credentials and settings.
-copilot_flow/bridge.js: JavaScript file for bridging workflows.
-copilot_flow/chat.prompty: Prompt template for chat-based workflows.
-copilot_flow/copilot.py: Python script handling copilot functionality.
-copilot_flow/flow.flex.yaml: Configuration file for flexible workflows.
-copilot_flow/input_with_chat_history.json: Sample input data with chat history.
-copilot_flow/oneQuestionEval.py: Script for evaluating single question workflows.
-copilot_flow/queryIntent.prompty: Prompt template for intent-based queries.
+The **`azure`** folder contains the core functionality of Shazam, focusing on Azure integration and Promptflow workflows.
 
+### Key Files:
+
+- **`.env`**: Environment configuration for Azure credentials and settings.
+- **`copilot_flow/bridge.js`**: JavaScript file for bridging workflows.
+- **`copilot_flow/chat.prompty`**: Prompt template for chat-based workflows.
+- **`copilot_flow/copilot.py`**: Python script handling copilot functionality.
+- **`copilot_flow/flow.flex.yaml`**: Configuration file for flexible workflows.
+- **`copilot_flow/input_with_chat_history.json`**: Sample input data with chat history.
+- **`copilot_flow/oneQuestionEval.py`**: Script for evaluating single question workflows.
+- **`copilot_flow/queryIntent.prompty`**: Prompt template for intent-based queries.
