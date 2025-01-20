@@ -67,3 +67,14 @@ The **`azure`** folder contains the core functionality of Shazam, focusing on Az
 - **`copilot_flow/input_with_chat_history.json`**: Sample input data with chat history.
 - **`copilot_flow/oneQuestionEval.py`**: Script for evaluating single question workflows.
 - **`copilot_flow/queryIntent.prompty`**: Prompt template for intent-based queries.
+## Frontend Module Details
+
+The **`Front-end-02`** folder contains components and scripts related to the user-facing part of Shazam. This module is intended for building and enhancing the frontend interface.
+
+### Key Files:
+-**`index.html`**: The main HTML file for the frontend interface.
+-**`style.css`**: Stylesheet for the user interface.
+-**`app.js`**: Core JavaScript logic for handling user interactions.
+-**`components/`**: A directory containing reusable frontend components.
+
+
