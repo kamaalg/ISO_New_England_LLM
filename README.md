@@ -31,3 +31,26 @@
 - **Homebrew** (MacOS):
   ```bash
   brew update && brew install azure-cli
+  ```
+- **Azure CLI**:
+  ```bash
+    az login
+  ```
+- **Python Packages:
+  ```
+    python -m pip install --upgrade pip
+    pip install promptflow azure-identity
+  ```
+## Project Structure
+```
+├── .idea/                 # IDE configuration files
+├── copilot_flow/          # Workflow and flow definitions
+├── tests.py               # Testing scripts
+├── package.json           # Project dependencies
+├── README.md              # Project documentation
+├── .gitignore             # Git ignore rules
+├── azure/                 # Azure module for managing workflows
+├── Front-end-02/          # Frontend components
+├── shazam-scraping/       # Scraping scripts and collected data
+```
+
