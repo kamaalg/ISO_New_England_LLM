@@ -12,7 +12,6 @@
 - [Frontend Module Details](#frontend-module-details)
 - [Scraping Module Details](#scraping-module-details)
 - [Running Instructions](#running-instructions)
-- [To-Do](#to-do)
 
 ---
 
@@ -115,6 +114,9 @@ Replace "sample query" with your desired input for testing.
    The scraped data will be saved in the shazam-scraping/data directory.
 4.**Run a server and frontend together**:
    ```
+   concurrently \"node ../azure/copilot_flow/server.js \" \"next dev\"
+   ```
+   
 
   
 
