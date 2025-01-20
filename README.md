@@ -88,5 +88,33 @@ The **`shazam-scraping`** folder contains scripts and data used to scrape docume
 - **`requirements.txt`**: Python dependencies required for running the scraper.
 - **`data/`**: Directory containing the scraped documentation and resources.
 
+## Running Instructions
 
+1. **Install Dependencies**:  
+   Ensure all prerequisites are installed as outlined in the prerequisites section.
+
+   ```
+   brew update && brew install azure-cli
+   az login
+   python -m pip install --upgrade pip
+   pip install promptflow azure-identity
+----
+2. **Run a workflow**:
+   Use the following command to test a workflow using Promptflow:
+```
+pf flow test --flow ./copilot_flow --inputs chat_input="sample query"
+
+```
+Replace "sample query" with your desired input for testing.
+
+3. **Run a Scraper**:
+   To scrape data from the ISO New England website, run:
+        ```
+         python shazam-scraping/scraper.py
+       ```
+   The scraped data will be saved in the shazam-scraping/data directory.
+4.**Run a server and frontend together**:
+   ```
+
+  
 
