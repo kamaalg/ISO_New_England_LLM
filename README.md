@@ -1,25 +1,33 @@
 # Shazam
-To use this code, run the following in vscode virtual environment (venv)
 
-brew update && brew install azure-cli
+**Shazam** is a project that integrates with Azure services to process queries and execute workflows using Promptflow. This project enables seamless management of Azure resources and testing of custom workflows with ease.
 
-az login
+## Table of Contents
 
-python -m pip install --upgrade pip
+- [Overview](#overview)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Project Structure](#project-structure)
+- [Azure Module Details](#azure-module-details)
+- [Frontend Module Details](#frontend-module-details)
+- [Scraping Module Details](#scraping-module-details)
+- [Running Instructions](#running-instructions)
+- [To-Do](#to-do)
 
-pip install promptflow
+---
 
-pip install azure-identity
+## Overview
 
-az login will prompt you for your azure credentials. You should have no issue here, text me if you do. 
-In order to make a request, 
+**Shazam** is designed to simplify the interaction with Azure services by offering a robust framework for running and testing workflows. It uses tools like Azure CLI and Promptflow to enable users to manage and execute queries efficiently.
 
-pf flow test --flow ./copilot_flow --inputs chat_input="sample query"
+## Features
 
-This is broken. Why? I still need to fix the quota issue.
+- **Azure CLI Integration**: Seamlessly log in and manage Azure resources.
+- **Promptflow Workflows**: Test and execute custom workflows for various use cases.
+- **Error Handling**: Built-in mechanisms to provide informative error messages.
 
+### Prerequisites
 
-TO-DO:
-a) fix quota issue
-b) fix constant re-authentication (az login) - maybe a key? This shouldn't be too hard
-c) there's a weird dag/flex prompt flow error I don't understand. It doesn't seem to be breaking anything but there is unexpected behavior. Figure this out. 
+- **Homebrew** (MacOS):
+  ```bash
+  brew update && brew install azure-cli
