@@ -105,13 +105,14 @@ pf flow test --flow ./copilot_flow --inputs chat_input="sample query"
 
 ```
 Replace "sample query" with your desired input for testing.
-
+---
 3. **Run a Scraper**:
    To scrape data from the ISO New England website, run:
         ```
          python shazam-scraping/scraper.py
        ```
    The scraped data will be saved in the shazam-scraping/data directory.
+---
 4.**Run a server and frontend together**:
    ```
    concurrently \"node ../azure/copilot_flow/server.js \" \"next dev\"
