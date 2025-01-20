@@ -79,4 +79,14 @@ The **`Front-end-02`** folder contains components and scripts related to the use
 - **`app.js`**:  Core JavaScript logic for handling user interactions.
 - **`components/`**: A directory containing reusable frontend components.
 
+## Scraping Module Details
+
+The **`shazam-scraping`** folder contains scripts and data used to scrape documentation and resources from the ISO New England website. This module automates data collection for use within the project.
+
+### Key Files:
+- **`scraper.py`**: The main script for scraping data.
+- **`requirements.txt`**: Python dependencies required for running the scraper.
+- **`data/`**: Directory containing the scraped documentation and resources.
+
+
 
